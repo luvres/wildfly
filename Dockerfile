@@ -20,9 +20,6 @@ ENV ORACLE_CONN_J_URL $URL_JDBC/$ORACLE_CONN_J
 ENV POSTGRES_CONN_J postgresql-9.4.1212.jar
 ENV POSTGRES_CONN_J_URL $URL_JDBC/$POSTGRES_CONN_J
 
-RUN /opt/jboss/wildfly/bin/add-user.sh admin $PASS --silent
-CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
-
 ### Datasource
 RUN mkdir -p /opt/jboss/wildfly/modules/system/layers/base/com/mysql/main \
     && curl -fSL $MYSQL_CONN_J_URL -o /opt/jboss/wildfly/modules/system/layers/base/com/mysql/main/$MYSQL_CONN_J
@@ -90,4 +87,8 @@ RUN sed -i 's/<\/drivers>/    <driver name="OracleXE" module="com.oracle">\n\t\t
 
 # (PostgreSQL)
 RUN sed -i 's/<\/drivers>/    <driver name="PostgreSQL" module="org.postgres">\n\t\t\t<xa-datasource-class>org.postgresql.xa.PGXADataSource<\/xa-datasource-class>\n\t\t    <\/driver>\n\t\t<\/drivers>/' /opt/jboss/wildfly/standalone/configuration/standalone.xml
+
+
+ADD start.sh /etc/start.sh
+ENTRYPOINT ["bash", "/etc/start.sh"]
 

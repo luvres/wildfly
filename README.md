@@ -10,6 +10,7 @@ docker pull izone/wildfly
 docker run --rm --name Wildfly -h wildfly \
 -p 8080:8080 \
 -p 9990:9990 \
+-e PASS="paSSadm" \
 -ti izone/wildfly
 ```
 ### Or
@@ -35,6 +36,11 @@ docker run \
 ### Browser access:
 ```
 http://localhost:8080/
+```
+##### Default password if not defined
+```
+username: admin
+password: admin
 ```
 ### Browser Administration Console access:
 ```
@@ -78,6 +84,11 @@ Password: p4asSwd
 		Test Connection
 
 	      Finish
+```
+
+### Auto Construction
+```
+docker build -t izone/wildfly .
 ```
 
 The script can be run anywhere after downloading:
