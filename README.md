@@ -88,6 +88,9 @@ Password: p4asSwd
 
 ### Auto Construction
 ```
+git clone https://github.com/luvres/wildfly-10.1.0.Final.git
+cd wildfly-10.1.0.Final
+
 docker build -t izone/wildfly .
 ```
 
