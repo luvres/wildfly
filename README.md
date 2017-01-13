@@ -96,8 +96,8 @@ docker build -t izone/wildfly .
 
 The script can be run anywhere after downloading:
 
-        git clone https://github.com/luvres/wildfly-10.1.0.Final.git
-        cd wildfly-10.1.0.Final
+        git clone https://github.com/luvres/wildfly.git
+        cd wildfly
 
 For construction of the container run the following command with with the necessary parameters:
 
