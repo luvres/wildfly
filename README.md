@@ -93,11 +93,3 @@ cd wildfly
 
 docker build -t izone/wildfly .
 ```
-
-For construction of the container run the following command with with the necessary parameters:
-
-	sh wildfly_10_sql.sh <pasword Manager Web> <wildfly port(8080)> <admin port(9990)>
-
-Example:
-
-	sh wildfly_10_sql.sh p4asSwd 8888 9999
