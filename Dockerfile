@@ -1,5 +1,4 @@
 FROM jboss/wildfly:10.1.0.Final
-
 MAINTAINER Leonardo Loures <luvres@hotmail.com>
 
 ENV PASS admin
