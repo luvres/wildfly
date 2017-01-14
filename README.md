@@ -94,11 +94,6 @@ cd wildfly
 docker build -t izone/wildfly .
 ```
 
-The script can be run anywhere after downloading:
-
-        git clone https://github.com/luvres/wildfly.git
-        cd wildfly
-
 For construction of the container run the following command with with the necessary parameters:
 
 	sh wildfly_10_sql.sh <pasword Manager Web> <wildfly port(8080)> <admin port(9990)>
