@@ -20,19 +20,38 @@ docker run --name Wildfly -h wildfly \
 -p 9990:9990 \
 -d izone/wildfly
 ```
-### Links Databases
+### Links Databases with JDBC Datasource
+##### MySQL
 ```
-docker run \
---name Wildfly -h wildfly \
+docker run --name MySQL -h mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=pass -d mysql
+
+docker run --rm --name Wildfly -h wildfly \
 --link MySQL:mysql-host \
---link MariaDB:mariadb-host \
---link OracleXE:oracle-host \
---link PostgreSQL:postgres-host \
+-e HOST_MYSQL=mysql-host \
+-e PASS="aamu02" \
+-e PORT_MYSQL=3306 \
+-e USER_MYSQL=root \
+-e PASS_MYSQL=pass \
+-e DB_MYSQL=mysql \
 -p 8080:8080 \
 -p 9990:9990 \
--d wildfly
+-ti izone/wildfly
 ```
+##### Oracle
+```
+docker run --name OracleXE -h oraclexe -p 1521:1521 -d izone/oracle
 
+docker run --rm --name Wildfly -h wildfly \
+--link OracleXE:oracle-host \
+-e HOST_ORACLE=oracle-host \
+-e PORT_ORACLE=1521 \
+-e USER_ORACLE=system \
+-e PASS_ORACLE=oracle \
+-e DB_ORACLE=XE \
+-p 8080:8080 \
+-p 9990:9990 \
+-ti izone/wildfly
+```
 ### Browser access:
 ```
 http://localhost:8080/
