@@ -10,7 +10,6 @@ docker pull izone/wildfly
 docker run --rm --name Wildfly -h wildfly \
 -p 8080:8080 \
 -p 9990:9990 \
--e PASS="admin" \
 -ti izone/wildfly
 ```
 ### Or
@@ -28,7 +27,7 @@ docker run --name MySQL -h mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=pass -d mys
 docker run --rm --name Wildfly -h wildfly \
 --link MySQL:mysql-host \
 -e HOST_MYSQL=mysql-host \
--e PASS="aamu02" \
+-e PASS="admin" \
 -e PORT_MYSQL=3306 \
 -e USER_MYSQL=root \
 -e PASS_MYSQL=pass \
@@ -43,6 +42,7 @@ docker run --name OracleXE -h oraclexe -p 1521:1521 -d izone/oracle
 
 docker run --rm --name Wildfly -h wildfly \
 --link OracleXE:oracle-host \
+-e PASS="admin" \
 -e HOST_ORACLE=oracle-host \
 -e PORT_ORACLE=1521 \
 -e USER_ORACLE=system \
