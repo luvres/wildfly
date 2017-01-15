@@ -1,6 +1,6 @@
-# Windfly 10.1.0 Final
-## Wildfly 10 with the main SQL connectors in container Docker
-
+## Windfly 10.1.0 Final
+### Wildfly 10 with the main SQL connectors in container Docker
+-----
 ### Pull image latest
 ```
 docker pull izone/wildfly
