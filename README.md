@@ -1,5 +1,5 @@
-## Windfly 10.1.0 Final
-### Wildfly 10 with the main SQL connectors in container Docker
+## Windfly 10
+### Windfly 10.1.0 Final with the main SQL connectors Java 8
 -----
 ### Pull image latest
 ```
