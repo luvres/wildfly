@@ -10,7 +10,7 @@ docker pull izone/wildfly
 docker run --rm --name Wildfly -h wildfly \
 -p 8080:8080 \
 -p 9990:9990 \
--e PASS="paSSadm" \
+-e PASS="admin" \
 -ti izone/wildfly
 ```
 ### Or
