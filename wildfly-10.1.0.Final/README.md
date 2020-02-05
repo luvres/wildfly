@@ -1,5 +1,5 @@
-## Windfly 18
-### Windfly 18.0.1 Final with the main SQL connectors Java
+## Windfly 10
+### Windfly 10.1.0 Final with the main SQL connectors Java 8
 -----
 ### Pull image latest
 ```

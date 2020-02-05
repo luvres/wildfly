@@ -1,22 +1,22 @@
-FROM jboss/wildfly:18.0.1.Final
+FROM jboss/wildfly:10.1.0.Final
 MAINTAINER Leonardo Loures <luvres@hotmail.com>
 
 ENV PASS admin
 
 ENV URL_JDBC="https://github.com/luvres/jdbc/raw/master/"
 
-ENV MYSQL_CONN_J_VERSION="8.0.19"
-ENV MYSQL_CONN_J="mysql-connector-java-$MYSQL_CONN_J_VERSION.jar"
+ENV MYSQL_CONN_J_VERSION="5.1.44"
+ENV MYSQL_CONN_J="mysql-connector-java-$MYSQL_CONN_J_VERSION-bin.jar"
 ENV MYSQL_CONN_J_URL $URL_JDBC/$MYSQL_CONN_J
 
-ENV MARIADB_CONN_J_VERSION 2.5.4
+ENV MARIADB_CONN_J_VERSION 2.2.0
 ENV MARIADB_CONN_J mariadb-java-client-$MARIADB_CONN_J_VERSION.jar
 ENV MARIADB_CONN_J_URL $URL_JDBC/$MARIADB_CONN_J
 
 ENV ORACLE_CONN_J ojdbc7.jar
 ENV ORACLE_CONN_J_URL $URL_JDBC/$ORACLE_CONN_J
 
-ENV POSTGRES_CONN_J postgresql-42.2.9.jar
+ENV POSTGRES_CONN_J postgresql-42.1.4.jar
 ENV POSTGRES_CONN_J_URL $URL_JDBC/$POSTGRES_CONN_J
 
 ### Datasource
@@ -33,7 +33,7 @@ RUN mkdir -p /opt/jboss/wildfly/modules/system/layers/base/org/postgres/main \
 RUN echo '<?xml version="1.0" encoding="UTF-8"?>' >>/opt/jboss/wildfly/modules/system/layers/base/com/mysql/main/module.xml \
     && echo '<module xmlns="urn:jboss:module:1.1" name="com.mysql">' >>/opt/jboss/wildfly/modules/system/layers/base/com/mysql/main/module.xml \
     && echo '<resources>' >>/opt/jboss/wildfly/modules/system/layers/base/com/mysql/main/module.xml \
-    && echo '   <resource-root path="mysql-connector-java-8.0.19.jar"/>' >>/opt/jboss/wildfly/modules/system/layers/base/com/mysql/main/module.xml \
+    && echo '   <resource-root path="mysql-connector-java-5.1.44-bin.jar"/>' >>/opt/jboss/wildfly/modules/system/layers/base/com/mysql/main/module.xml \
     && echo '</resources>' >>/opt/jboss/wildfly/modules/system/layers/base/com/mysql/main/module.xml \
     && echo '<dependencies>' >>/opt/jboss/wildfly/modules/system/layers/base/com/mysql/main/module.xml \
     && echo '   <module name="javax.api"/>' >>/opt/jboss/wildfly/modules/system/layers/base/com/mysql/main/module.xml \
@@ -44,7 +44,7 @@ RUN echo '<?xml version="1.0" encoding="UTF-8"?>' >>/opt/jboss/wildfly/modules/s
 RUN echo '<?xml version="1.0" encoding="UTF-8"?>' >>/opt/jboss/wildfly/modules/system/layers/base/org/mariadb/main/module.xml \
     && echo '<module xmlns="urn:jboss:module:1.1" name="org.mariadb">' >>/opt/jboss/wildfly/modules/system/layers/base/org/mariadb/main/module.xml \
     && echo '<resources>' >>/opt/jboss/wildfly/modules/system/layers/base/org/mariadb/main/module.xml \
-    && echo '   <resource-root path="mariadb-java-client-2.5.4.jar"/>' >>/opt/jboss/wildfly/modules/system/layers/base/org/mariadb/main/module.xml \
+    && echo '   <resource-root path="mariadb-java-client-2.2.0.jar"/>' >>/opt/jboss/wildfly/modules/system/layers/base/org/mariadb/main/module.xml \
     && echo '</resources>' >>/opt/jboss/wildfly/modules/system/layers/base/org/mariadb/main/module.xml \
     && echo '<dependencies>' >>/opt/jboss/wildfly/modules/system/layers/base/org/mariadb/main/module.xml \
     && echo '   <module name="javax.api"/>' >>/opt/jboss/wildfly/modules/system/layers/base/org/mariadb/main/module.xml \
@@ -66,7 +66,7 @@ RUN echo '<?xml version="1.0" encoding="UTF-8"?>' >>/opt/jboss/wildfly/modules/s
 RUN echo '<?xml version="1.0" encoding="UTF-8"?>' >>/opt/jboss/wildfly/modules/system/layers/base/org/postgres/main/module.xml \
     && echo '<module xmlns="urn:jboss:module:1.1" name="org.postgres">' >>/opt/jboss/wildfly/modules/system/layers/base/org/postgres/main/module.xml \
     && echo '<resources>' >>/opt/jboss/wildfly/modules/system/layers/base/org/postgres/main/module.xml \
-    && echo '   <resource-root path="postgresql-42.2.9.jar"/>' >>/opt/jboss/wildfly/modules/system/layers/base/org/postgres/main/module.xml \
+    && echo '   <resource-root path="postgresql-42.1.4.jar"/>' >>/opt/jboss/wildfly/modules/system/layers/base/org/postgres/main/module.xml \
     && echo '</resources>' >>/opt/jboss/wildfly/modules/system/layers/base/org/postgres/main/module.xml \
     && echo '<dependencies>' >>/opt/jboss/wildfly/modules/system/layers/base/org/postgres/main/module.xml \
     && echo '   <module name="javax.api"/>' >>/opt/jboss/wildfly/modules/system/layers/base/org/postgres/main/module.xml \
